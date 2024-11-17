@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Team Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1><i class="fas fa-futbol"></i> Football Team Search</h1>
+            <p class="subtitle">Search and explore teams across European leagues</p>
+        </header>
+
+        <nav class="navigation">
+            <a href="index.html" class="nav-btn">
+                <i class="fas fa-chart-line"></i>
+                Match Predictor
+            </a>
+            <a href="team-search.html" class="nav-btn active">
+                <i class="fas fa-search"></i>
+                Team Search
+            </a>
+        </nav>
+
+        <div id="search-container" class="feature-container active">
+            <div class="search-controls">
+                <div class="search-header">
+                    <div class="search-input-group">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="teamSearch" placeholder="Search for a team...">
+                    </div>
+                    <div class="filter-group">
+                        <select id="leagueFilter">
+                            <option value="all">All Leagues</option>
+                            <option value="English Premier League">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</option>
+                            <option value="Spanish La Liga">🇪🇸 La Liga</option>
+                            <option value="Italian Serie A">🇮🇹 Serie A</option>
+                            <option value="German Bundesliga">🇩🇪 Bundesliga</option>
+                            <option value="French Ligue 1">🇫🇷 Ligue 1</option>
+                        </select>
+                        <select id="sortTeams">
+                            <option value="name">Sort by Name</option>
+                            <option value="league">Sort by League</option>
+                            <option value="country">Sort by Country</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="search-options">
+                    <label class="favorite-toggle">
+                        <input type="checkbox" id="showFavorites">
+                        <span>Show Favorites Only</span>
+                    </label>
+                    <span id="resultsCount" class="results-count"></span>
+                </div>
+            </div>
+            <div id="search-results"></div>
+        </div>
+
+        <footer>
+            <p>Powered by TheSportsDB API</p>
+        </footer>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="team-search.js"></script>
+</body>
+</html>

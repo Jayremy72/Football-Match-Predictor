@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Match Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1><i class="fas fa-futbol"></i> Football Match Predictor</h1>
+            <p class="subtitle">Compare teams and predict match outcomes across European leagues</p>
+        </header>
+
+        <nav class="navigation">
+            <a href="index.html" class="nav-btn active">
+                <i class="fas fa-chart-line"></i> Match Predictor
+            </a>
+            <a href="team-search.html" class="nav-btn">
+                <i class="fas fa-search"></i> Team Search
+            </a>
+        </nav>
+
+        <div id="predictor-container" class="feature-container active">
+            <div class="team-selector">
+                <div class="team-select-group">
+                    <label for="league1-select">Home Team League</label>
+                    <select id="league1-select" class="league-select">
+                        <option value="all">All Leagues</option>
+                        <option value="English Premier League">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</option>
+                        <option value="Spanish La Liga">🇪🇸 La Liga</option>
+                        <option value="Italian Serie A">🇮🇹 Serie A</option>
+                        <option value="German Bundesliga">🇩🇪 Bundesliga</option>
+                        <option value="French Ligue 1">🇫🇷 Ligue 1</option>
+                    </select>
+                    
+                    <label for="team1-select">Home Team</label>
+                    <select id="team1-select">
+                        <option value="">Select Home Team</option>
+                    </select>
+                </div>
+
+                <div class="vs">
+                    <i class="fas fa-versus"></i>
+                </div>
+
+                <div class="team-select-group">
+                    <label for="league2-select">Away Team League</label>
+                    <select id="league2-select" class="league-select">
+                        <option value="all">All Leagues</option>
+                        <option value="English Premier League">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</option>
+                        <option value="Spanish La Liga">🇪🇸 La Liga</option>
+                        <option value="Italian Serie A">🇮🇹 Serie A</option>
+                        <option value="German Bundesliga">🇩🇪 Bundesliga</option>
+                        <option value="French Ligue 1">🇫🇷 Ligue 1</option>
+                    </select>
+                    
+                    <label for="team2-select">Away Team</label>
+                    <select id="team2-select">
+                        <option value="">Select Away Team</option>
+                    </select>
+                </div>
+
+                <button id="compare-teams">
+                    <i class="fas fa-chart-line"></i> Compare & Predict
+                </button>
+            </div>
+
+            <div id="comparison-results">
+                <!-- Results will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by TheSportsDB API</p>
+        </footer>
+    </div>
+
+    <!-- Template for comparison results -->
+    <template id="comparison-template">
+        <div class="comparison-container">
+            <div class="teams-comparison-header">
+                <div class="team-comparison-side">
+                    <img src="" alt="" class="team1-badge team-badge">
+                    <h3 class="team-name team1-name"></h3>
+                </div>
+                <div class="versus-divider">
+                    <div class="vs-text">VS</div>
+                    <div class="prediction-score-container">
+                        <div class="prediction-label">Predicted Score</div>
+                        <div class="predicted-score">
+                            <span class="score home team1-score">0</span>
+                            <span class="score-divider">-</span>
+                            <span class="score away team2-score">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-comparison-side">
+                    <img src="" alt="" class="team2-badge team-badge">
+                    <h3 class="team-name team2-name"></h3>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <!-- Stats will be inserted here -->
+            </div>
+
+            <div class="probabilities">
+                <div class="probability-item">
+                    <div class="prob-label">Home Win</div>
+                    <div class="prob-value home-win"></div>
+                </div>
+                <div class="probability-item">
+                    <div class="prob-label">Draw</div>
+                    <div class="prob-value draw"></div>
+                </div>
+                <div class="probability-item">
+                    <div class="prob-label">Away Win</div>
+                    <div class="prob-value away-win"></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
