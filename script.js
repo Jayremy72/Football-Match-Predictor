@@ -335,16 +335,43 @@ function predictScore(team1Strength, team2Strength) {
     };
 }
 
-function displayTeams(teams) {
-    const resultsContainer = document.getElementById('search-results');
-    resultsContainer.className = 'dynamic-content'; // Add this class
-    // ... rest of the function
-}
-
 function displayComparison(comparison) {
     const container = document.getElementById('comparison-results');
-    container.className = 'dynamic-content'; // Add this class
-    // ... rest of the function
+    const template = document.getElementById('comparison-template');
+    const content = template.content.cloneNode(true);
+
+    // Set team names and badges
+    content.querySelector('.team1-name').textContent = comparison.team1.name;
+    content.querySelector('.team2-name').textContent = comparison.team2.name;
+    
+    const team1Badge = content.querySelector('.team1-badge');
+    const team2Badge = content.querySelector('.team2-badge');
+    
+    team1Badge.src = comparison.team1.badge;
+    team2Badge.src = comparison.team2.badge;
+    team1Badge.alt = comparison.team1.name;
+    team2Badge.alt = comparison.team2.name;
+
+    // Set predicted score
+    content.querySelector('.team1-score').textContent = comparison.prediction.score1;
+    content.querySelector('.team2-score').textContent = comparison.prediction.score2;
+
+    // Create stats rows
+    const statsGrid = content.querySelector('.stats-grid');
+    Object.entries(comparison.team1.stats).forEach(([stat, value1]) => {
+        const value2 = comparison.team2.stats[stat];
+        statsGrid.appendChild(createStatRow(stat, value1, value2));
+    });
+
+    // Set probabilities
+    content.querySelector('.home-win').textContent = `${Math.round(comparison.prediction.team1Win)}%`;
+    content.querySelector('.draw').textContent = `${Math.round(comparison.prediction.draw)}%`;
+    content.querySelector('.away-win').textContent = `${Math.round(comparison.prediction.team2Win)}%`;
+
+    // Clear previous results and show new comparison
+    container.innerHTML = '';
+    container.appendChild(content);
+    container.scrollIntoView({ behavior: 'smooth' });
 }
 
 function createStatRow(label, value1, value2) {
